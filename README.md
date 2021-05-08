@@ -18,6 +18,14 @@ It will also correctly work, close the connection and avoid forking a new proces
 spawning a new worker.
 All things the original [code](https://github.com/sigmonsays/smallest-docker-httpd) failed to do.
 
+# Configuration
+
+The server will listen on 0.0.0.0:8800 (just like the original httpd example linked above).
+You can easily change that by editing the last line of the source. Particularly, you'll find a line `MAKE_PORT 8800` that can be altered to 
+change the port and a **commented** `MAKE_INTERFACE 0, 0, 0, 0` line that can be used to pass the IPv4 of the interface to listen to (each octect
+separated by a comma).  
+The line is commented to exploit an ugly hack to save 4 bytes. Decommenting it will make the binary 4 bytes longer. 
+
 # Build
 
 Just run
