@@ -43,4 +43,17 @@ I suppose you can create an image with:
 
 This should only include the `httpd2` binary.
 **NOTE** `httpd2` doesn't need any dependency library or any file, you don't need to use a base distribution image.
+
+# Further reduce the size
+
+By setting:
+
+    html: db ""
+
+you can reduce the size of the binary to 194 bytes. However, an empty response is **not** a valid HTTP response.
+Setting:
+
+    html: db "HTTP/1.0 204", 13, 10, 13, 10
+
+will reduce the size to 210 bytes and will send a valid HTTP response.
  
